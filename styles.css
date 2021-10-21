@@ -5,3 +5,120 @@
   box-sizing: border-box;
   font-family: "El Messiri", sans-serif;
 }
+
+body {
+  color: rgb(51, 51, 51);
+}
+
+i {
+  pointer-events: none;
+}
+
+.colors {
+  min-height: 80vh;
+  color: rgb(212, 212, 212);
+  display: flex;
+}
+
+.color {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.color h2 {
+  font-size: 1.5rrem;
+  cursor: pointer;
+}
+
+.sliders {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  background: #fff;
+  padding: 15px;
+  width: 80%;
+  /* opacity: 0; */
+  border-radius: 1rem 1rem 0 0;
+  /* transform: translateY(100px); */
+  transition: all 0.5s ease-in-out;
+  /* pointer-events: none; */
+}
+
+.sliders.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.sliders button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.4rem;
+  border: none;
+  background: crimson;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 1rem 0 0 1rem;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 20vh;
+}
+
+.panel button {
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  border: none;
+  color: #fff;
+  background: rgb(12, 19, 83);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.panel p {
+  font-size: 1.2rem;
+}
+
+.library-panel,
+.generate-panel,
+.save-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.adjust,
+.lock {
+  font-size: 1.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 2rem 0;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 1rem 0;
+  width: 100%;
+  position: relative;
+  border-radius: 1rem;
+  cursor: pointer;
+}
