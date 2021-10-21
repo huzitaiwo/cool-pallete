@@ -62,14 +62,14 @@ function colorizeSlider(color, hue, brightness, saturation) {
     const midBright = color.set('hsl.l', 0.5);
     const scaleBright = chroma.scale(['black', midBright, 'white']);
 
-    // scale hue
-
     // update input-range colors
 
     // saturation
     saturation.style.background = `linear-gradient(to right, ${scaleSaturation(0)}, ${scaleSaturation(1)})`;
     // brightness
     brightness.style.background = `linear-gradient(to right, ${scaleBright(0)}, ${scaleBright(0.5)}, ${scaleBright(1)})`;
+    // hue
+    hue.style.background = `linear-gradient(to right, rgb(201,75,75), rgb(204,204,75), rgb(75, 204, 75), rgb(75, 204, 204), rgb(75,75,204), rgb(204, 75, 204), rgb(204, 75, 75))`
 }
 
 randomColors();
