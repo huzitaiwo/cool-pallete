@@ -105,8 +105,8 @@ function updateTextUI(i) {
     const icons = activeDiv.querySelectorAll('.controls button');
     // change text hex code
     hexText.textContent = color.hex();
-    // // check Contrast
-    // checkContrast(color, hexText);
+    // check Contrast
+    checkContrast(color, hexText);
 }
 
 randomColors();
