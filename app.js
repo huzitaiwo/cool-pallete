@@ -1,5 +1,5 @@
 // global slections and variables
-const colorsDiv = document.querySelectorAll('.color');
+const colorDivs = document.querySelectorAll('.color');
 const generateBtn = document.querySelectorAll('.generate');
 const sliders = document.querySelectorAll('input[type="range"]');
 const currentHexs = document.querySelectorAll('.color h2');
@@ -7,7 +7,12 @@ const currentHexs = document.querySelectorAll('.color h2');
 // EVENT LISTENERS
 sliders.forEach(slider => {
     slider.addEventListener('input', hslControls);
-})
+});
+colorDivs.forEach((div, i) => {
+    div.addEventListener('change', () => {
+        updateTextUI(i);
+    });
+});
 
 // FUNTIONS
 // color Generator
@@ -35,7 +40,7 @@ function checkContrast(color, text) {
 }
 
 function randomColors() {
-    colorsDiv.forEach((div, index) => {
+    colorDivs.forEach((div, index) => {
         const hexText = div.children[0];
         const randomColor = generateHex();
 
@@ -83,14 +88,25 @@ function hslControls(e) {
     const hue = sliders[0];
     const brightness = sliders[1];
     const saturation = sliders[2];
-    const bgColor = colorsDiv[index].querySelector('h2').textContent;
+    const bgText = colorDivs[index].querySelector('h2').textContent;
 
-    let color = chroma(bgColor)
+    let color = chroma(bgText)
         .set('hsl.s', saturation.value)
         .set('hsl.l', brightness.value)
         .set('hsl.h', hue.value);
 
-    colorsDiv[index].style.background = color;
+    colorDivs[index].style.background = color;
+}
+
+function updateTextUI(i) {
+    const activeDiv = colorDivs[i];
+    const color = chroma(activeDiv.style.background);
+    const hexText = activeDiv.querySelector('h2');
+    const icons = activeDiv.querySelectorAll('.controls button');
+    // change text hex code
+    hexText.textContent = color.hex();
+    // // check Contrast
+    // checkContrast(color, hexText);
 }
 
 randomColors();
