@@ -96,8 +96,15 @@ function randomColors() {
 
         colorizeSlider(color, hue, brightness, saturation)
     });
+
     // reset inputs:range
     resetInput();
+
+    // check button contrast
+    adjustmentBtn.forEach((btn, i) => {
+        checkContrast(initialColors[i], btn);
+        checkContrast(initialColors[i], LockBtn[i]);
+    });
 }
 
 function colorizeSlider(color, hue, brightness, saturation) {
