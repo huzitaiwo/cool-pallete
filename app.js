@@ -45,7 +45,13 @@ closeAdjustments.forEach((btn, i) => {
     btn.addEventListener('click', () => {
         closeAdjustmentPanel(i)
     });
-})
+});
+
+// LockBtn.forEach((btn, i) => {
+//     btn.addEventListener('click', () => {
+//         lockColor(i);
+//     })
+// })
 
 // FUNTIONS
 // color Generator
@@ -75,13 +81,20 @@ function checkContrast(color, text) {
 function randomColors() {
     // initial colors
     initialColors = [];
-    
+
     colorDivs.forEach((div, index) => {
         const hexText = div.children[0];
         const randomColor = generateHex();
 
-        // add colors to array
-        initialColors.push(chroma(randomColor).hex());
+        if(div.classList.contains('locked')) {
+            // store initil hexText value
+            initialColors.push(hexText.textContent);
+            return;
+        } else {
+            // add colors to array
+            initialColors.push(chroma(randomColor).hex());
+        }
+
 
         // add color to background
         div.style.background = randomColor;
@@ -202,9 +215,16 @@ function copyToClipboard(hex) {
 function openAdjustmentPanel(i) {
     sliderContainers[i].classList.toggle('active');
 }
+
 function closeAdjustmentPanel(i) {
     sliderContainers[i].classList.remove('active');
 }
+
+// function lockColor(i) {
+//     colorDivs.forEach(div => {
+//         div[i].classList.add('locked');
+//     });
+// }
 
 
 randomColors();
