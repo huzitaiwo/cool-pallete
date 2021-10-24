@@ -174,3 +174,24 @@ input[type="range"]::-webkit-slider-thumb {
   font-size: 1.5rem;
   padding: 1.5rem;
 }
+
+@media (max-width: 860px) {
+  .cl_05 {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .cl_05,
+  .cl_04 {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .cl_05,
+  .cl_04,
+  .cl_03 {
+    display: none;
+  }
+}
