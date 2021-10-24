@@ -221,10 +221,10 @@ function closeAdjustmentPanel(i) {
 }
 
 function lockColor(i) {
-    colorDivs[i].classList.add('locked');
+    colorDivs[i].classList.toggle('locked');
     const lockIcon = LockBtn[i].children[0];
-    lockIcon.classList.remove('fa-lock-open');
-    lockIcon.classList.add('fa-lock');
+    lockIcon.classList.toggle('fa-lock-open');
+    lockIcon.classList.toggle('fa-lock');
 }
 
 
