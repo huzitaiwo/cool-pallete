@@ -47,11 +47,11 @@ closeAdjustments.forEach((btn, i) => {
     });
 });
 
-// LockBtn.forEach((btn, i) => {
-//     btn.addEventListener('click', () => {
-//         lockColor(i);
-//     })
-// })
+LockBtn.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+        lockColor(i);
+    })
+})
 
 // FUNTIONS
 // color Generator
@@ -220,11 +220,12 @@ function closeAdjustmentPanel(i) {
     sliderContainers[i].classList.remove('active');
 }
 
-// function lockColor(i) {
-//     colorDivs.forEach(div => {
-//         div[i].classList.add('locked');
-//     });
-// }
+function lockColor(i) {
+    colorDivs[i].classList.add('locked');
+    const lockIcon = LockBtn[i].children[0];
+    lockIcon.classList.remove('fa-lock-open');
+    lockIcon.classList.add('fa-lock');
+}
 
 
 randomColors();
