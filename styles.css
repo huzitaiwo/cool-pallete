@@ -215,12 +215,10 @@ input[type="range"]::-webkit-slider-thumb {
   }
 
   .sliders {
-    display: block;
-    width: 20%;
-    transform: translateX(200px);
+    display:;
+    width: 90%;
     /* position: static; */
-    right: 5%;
-    padding: 0 10px;
+    bottom: 0;
   }
 
   .panel {
