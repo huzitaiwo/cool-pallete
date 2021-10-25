@@ -192,7 +192,8 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .library-popup {
-  min-width: 40%;
+  width: 90%;
+  max-width: 500px;
   padding: 1rem;
   justify-content: flex-start;
   overflow-y: scroll;
@@ -217,7 +218,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .small-preview div {
-  height: 5rem;
+  height: 3rem;
   flex: 1;
 }
 
@@ -252,5 +253,15 @@ input[type="range"]::-webkit-slider-thumb {
   .panel {
     background: #fff;
     height: auto;
+  }
+
+  .library-popup {
+    padding: 1rem 0;
+    justify-content: space-between;
+  }
+
+  .custom-palette h4 {
+    flex: none;
+    padding-right: 10px;
   }
 }
