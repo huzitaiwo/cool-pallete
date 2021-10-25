@@ -286,6 +286,7 @@ function savePalette(e) {
   const title = document.createElement("h4");
   title.textContent = paletteObj.name;
   const preview = document.createElement("div");
+  preview.classList.add("small-preview");
   paletteObj.colors.forEach((smallColor) => {
     const smallDiv = document.createElement("div");
     smallDiv.style.background = smallColor;
