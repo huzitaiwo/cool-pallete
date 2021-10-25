@@ -235,6 +235,16 @@ input[type="range"]::-webkit-slider-thumb {
   flex: 1;
 }
 
+.pick-palette-btn {
+  height: 3rem;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  font: 1.2rem;
+  background: rgb(12, 19, 83);
+  color: #fff;
+}
+
 @media (max-width: 775px) {
   .colors {
     flex-direction: column;
