@@ -6,6 +6,19 @@
   font-family: "El Messiri", sans-serif;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #5fcceb80;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(12, 19, 83);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(12, 19, 83);
+}
+
 body {
   color: rgb(51, 51, 51);
 }
