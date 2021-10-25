@@ -283,8 +283,8 @@ function savePalette(e) {
   //   generate palette for the library
   const palette = document.createElement("div");
   palette.classList.add("custom-palette");
-  const tittle = document.createElement("h4");
-  tittle.textContent = paletteObj.name;
+  const title = document.createElement("h4");
+  title.textContent = paletteObj.name;
   const preview = document.createElement("div");
   paletteObj.colors.forEach((smallColor) => {
     const smallDiv = document.createElement("div");
