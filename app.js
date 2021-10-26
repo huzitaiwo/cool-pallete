@@ -273,14 +273,17 @@ function savePalette(e) {
   currentHexs.forEach((hex) => {
     colors.push(hex.textContent);
   });
+
   // generate objects
   let paletteNr = savePalette.length;
   const paletteObj = { name, colors, nr: paletteNr };
   savedPalettes.push(paletteObj);
+
   // saved to local storage
   savetoLocal(paletteObj);
   saveInput.value = "";
-  //   generate palette for the library
+
+  // generate palette for the library
   const palette = document.createElement("div");
   palette.classList.add("custom-palette");
   const title = document.createElement("h4");
@@ -296,6 +299,22 @@ function savePalette(e) {
   paletteBtn.classList.add("pick-palette-btn");
   paletteBtn.classList.add(paletteObj.nr);
   paletteBtn.textContent = "Select";
+
+  //   attach event to the slect button
+  paletteBtn.addEventListener("click", (e) => {
+    closeLibrary();
+    const paletteIndex = e.target.classList[1];
+    initialColors = [];
+    // console.log(savedPalettes[0].colors);
+    savedPalettes[0].colors.forEach((color, i) => {
+      initialColors.push(color);
+      colorDivs[i].style.background = color;
+      const text = colorDivs[i].children[0];
+      checkContrast(color, text);
+      updateTextUI(i);
+    });
+    libraryInputUpdate();
+  });
 
   //   append to library
   palette.appendChild(title);
@@ -326,5 +345,7 @@ function closeLibrary() {
   libraryContainer.classList.remove("active");
   popup.classList.remove("active");
 }
+
+function libraryInputUpdate() {}
 
 randomColors();
