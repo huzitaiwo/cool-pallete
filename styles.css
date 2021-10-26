@@ -98,7 +98,8 @@ i {
 }
 
 .panel button,
-.submit-save {
+.submit-save,
+.clear-library {
   font-size: 1.1rem;
   padding: 0.5rem 1rem;
   margin: 1rem;
@@ -107,6 +108,11 @@ i {
   background: rgb(12, 19, 83);
   border-radius: 3px;
   cursor: pointer;
+}
+
+.submit-save {
+  display: block;
+  margin: 1rem auto;
 }
 
 .panel p {

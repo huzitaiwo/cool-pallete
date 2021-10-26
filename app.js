@@ -238,17 +238,19 @@ function lockColor(i) {
 // implement save to palette and local storage
 
 const saveBtn = document.querySelector(".save");
-const submitSave = document.querySelector(".submit-save");
+const submitSave = document.querySelector("submit-save");
+const saveForm = document.querySelector(".save-form");
 const closeSave = document.querySelector(".close-save");
 const saveContainer = document.querySelector(".save-container");
 const saveInput = document.querySelector(".save-container input");
 const libraryContainer = document.querySelector(".library-container");
 const libraryBtn = document.querySelector(".library");
 const closelibraryBtn = document.querySelector(".close-library");
+const clearLibraryBtn = document.querySelector(".clear-library");
 
 saveBtn.addEventListener("click", openPalette);
 closeSave.addEventListener("click", closePalette);
-submitSave.addEventListener("click", savePalette);
+saveForm.addEventListener("submit", savePalette);
 libraryBtn.addEventListener("click", openLibrary);
 closelibraryBtn.addEventListener("click", closeLibrary);
 
@@ -266,6 +268,7 @@ function closePalette(e) {
 }
 
 function savePalette(e) {
+  e.preventDefault();
   saveContainer.classList.remove("active");
   popup.classList.remove("active");
   const name = saveInput.value;
@@ -275,7 +278,14 @@ function savePalette(e) {
   });
 
   // generate objects
-  let paletteNr = savePalette.length;
+  let paletteNr;
+  const paletteObjects = JSON.parse(localStorage.getItem("palettes"));
+  if (paletteObjects) {
+    paletteNr = paletteObjects.length;
+  } else {
+    paletteNr = savedPalettes.length;
+  }
+
   const paletteObj = { name, colors, nr: paletteNr };
   savedPalettes.push(paletteObj);
 
@@ -305,8 +315,7 @@ function savePalette(e) {
     closeLibrary();
     const paletteIndex = e.target.classList[1];
     initialColors = [];
-    // console.log(savedPalettes[0].colors);
-    savedPalettes[0].colors.forEach((color, i) => {
+    savedPalettes[paletteIndex].colors.forEach((color, i) => {
       initialColors.push(color);
       colorDivs[i].style.background = color;
       const text = colorDivs[i].children[0];
@@ -346,4 +355,56 @@ function closeLibrary() {
   popup.classList.remove("active");
 }
 
+function getLocal() {
+  if (localStorage.getItem("palettes") === null) {
+    localPalettes = [];
+  } else {
+    const paletteObjects = JSON.parse(localStorage.getItem("palettes"));
+
+    // create copy of palette objects
+    savedPalettes = [...paletteObjects];
+
+    paletteObjects.forEach((paletteObj) => {
+      // generate palette for the library
+      const palette = document.createElement("div");
+      palette.classList.add("custom-palette");
+      const title = document.createElement("h4");
+      title.textContent = paletteObj.name;
+      const preview = document.createElement("div");
+      preview.classList.add("small-preview");
+      paletteObj.colors.forEach((smallColor) => {
+        const smallDiv = document.createElement("div");
+        smallDiv.style.background = smallColor;
+        preview.appendChild(smallDiv);
+      });
+      const paletteBtn = document.createElement("button");
+      paletteBtn.classList.add("pick-palette-btn");
+      paletteBtn.classList.add(paletteObj.nr);
+      paletteBtn.textContent = "Select";
+
+      //   attach event to the slect button
+      paletteBtn.addEventListener("click", (e) => {
+        closeLibrary();
+        const paletteIndex = e.target.classList[1];
+        initialColors = [];
+        paletteObjects[paletteIndex].colors.forEach((color, i) => {
+          initialColors.push(color);
+          colorDivs[i].style.background = color;
+          const text = colorDivs[i].children[0];
+          checkContrast(color, text);
+          updateTextUI(i);
+        });
+        resetInput();
+      });
+
+      //   append to library
+      palette.appendChild(title);
+      palette.appendChild(preview);
+      palette.appendChild(paletteBtn);
+      libraryContainer.children[0].appendChild(palette);
+    });
+  }
+}
+
+getLocal();
 randomColors();
