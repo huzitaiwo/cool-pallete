@@ -247,12 +247,17 @@ const libraryContainer = document.querySelector(".library-container");
 const libraryBtn = document.querySelector(".library");
 const closelibraryBtn = document.querySelector(".close-library");
 const clearLibraryBtn = document.querySelector(".clear-library");
+const customPalletes = document.querySelectorAll(".custom-palette");
 
 saveBtn.addEventListener("click", openPalette);
 closeSave.addEventListener("click", closePalette);
 saveForm.addEventListener("submit", savePalette);
 libraryBtn.addEventListener("click", openLibrary);
 closelibraryBtn.addEventListener("click", closeLibrary);
+// clearLibraryBtn.addEventListener("click", () => {
+//   localStorage.clear();
+//   location.reload();
+// });
 
 function openPalette(e) {
   const popup = saveContainer.children[0];

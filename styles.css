@@ -110,6 +110,10 @@ i {
   cursor: pointer;
 }
 
+.clear-library {
+  display: none;
+}
+
 .submit-save {
   display: block;
   margin: 1rem auto;
