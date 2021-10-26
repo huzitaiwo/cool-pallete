@@ -313,7 +313,7 @@ function savePalette(e) {
       checkContrast(color, text);
       updateTextUI(i);
     });
-    libraryInputUpdate();
+    resetInput();
   });
 
   //   append to library
@@ -345,7 +345,5 @@ function closeLibrary() {
   libraryContainer.classList.remove("active");
   popup.classList.remove("active");
 }
-
-function libraryInputUpdate() {}
 
 randomColors();
