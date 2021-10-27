@@ -254,10 +254,10 @@ closeSave.addEventListener("click", closePalette);
 saveForm.addEventListener("submit", savePalette);
 libraryBtn.addEventListener("click", openLibrary);
 closelibraryBtn.addEventListener("click", closeLibrary);
-// clearLibraryBtn.addEventListener("click", () => {
-//   localStorage.clear();
-//   location.reload();
-// });
+ clearLibraryBtn.addEventListener("click", () => {
+   localStorage.clear();
+   location.reload();
+});
 
 function openPalette(e) {
   const popup = saveContainer.children[0];
